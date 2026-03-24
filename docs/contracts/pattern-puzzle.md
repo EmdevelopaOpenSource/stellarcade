@@ -148,6 +148,7 @@ Returns `true` if the player has already claimed their reward for a round.
 pub fn has_claimed(env: Env, round_id: u32, player: Address) -> bool
 ```
 
+<<<<<<< HEAD
 #### Parameters
 
 | Name | Type |
@@ -166,7 +167,6 @@ Returns a leaderboard snapshot (addresses of players) for a given round. Support
 ```rust
 pub fn get_leaderboard(env: Env, round_id: u32, limit: Option<u32>) -> Vec<Address>
 ```
-
 #### Parameters
 
 | Name | Type |
