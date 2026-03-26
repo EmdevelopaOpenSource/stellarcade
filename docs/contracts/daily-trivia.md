@@ -106,7 +106,7 @@ pub fn get_round(env: Env, round_id: u64) -> Option<RoundData>
 `Option<RoundData>`
 
 ### `get_round_snapshot`
-Returns a single snapshot for the latest known round. The snapshot explicitly reports `Uninitialized`, `Active`, or `Resolved` and includes participant and reward metadata so consumers do not need multiple reads.
+Returns a single snapshot for the latest known round.
 
 ```rust
 pub fn get_round_snapshot(env: Env) -> Result<RoundSnapshot, Error>

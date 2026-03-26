@@ -394,6 +394,7 @@ impl DailyTrivia {
         env.storage().persistent().get(&DataKey::Round(round_id))
     }
 
+    /// Returns a single snapshot for the latest known round.
     pub fn get_round_snapshot(env: Env) -> Result<RoundSnapshot, Error> {
         require_initialized(&env)?;
 

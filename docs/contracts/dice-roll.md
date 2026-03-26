@@ -89,10 +89,33 @@ Admin-only update for the on-chain min and max wager settings. Rejects zero, neg
 pub fn set_wager_limits(env: Env, admin: Address, min_wager: i128, max_wager: i128) -> Result<(), Error>
 ```
 
+#### Parameters
+
+| Name | Type |
+|------|------|
+| `env` | `Env` |
+| `admin` | `Address` |
+| `min_wager` | `i128` |
+| `max_wager` | `i128` |
+
+#### Return Type
+
+`Result<(), Error>`
+
 ### `get_wager_limits`
 Read the current wager limits used during bet placement.
 
 ```rust
 pub fn get_wager_limits(env: Env) -> Result<WagerLimits, Error>
 ```
+
+#### Parameters
+
+| Name | Type |
+|------|------|
+| `env` | `Env` |
+
+#### Return Type
+
+`Result<WagerLimits, Error>`
 

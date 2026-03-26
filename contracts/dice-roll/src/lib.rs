@@ -344,6 +344,7 @@ impl DiceRoll {
             .ok_or(Error::GameNotFound)
     }
 
+    /// Admin-only update for the on-chain min and max wager settings.
     pub fn set_wager_limits(
         env: Env,
         admin: Address,
@@ -359,6 +360,7 @@ impl DiceRoll {
         Ok(())
     }
 
+    /// Read the current wager limits used during bet placement.
     pub fn get_wager_limits(env: Env) -> Result<WagerLimits, Error> {
         require_initialized(&env)?;
 

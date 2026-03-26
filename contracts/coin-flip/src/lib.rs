@@ -344,10 +344,8 @@ impl CoinFlip {
         let total = stored.len();
         let page_limit = if limit == 0 {
             PLAYER_HISTORY_LIMIT
-        } else if limit > PLAYER_HISTORY_LIMIT {
-            PLAYER_HISTORY_LIMIT
         } else {
-            limit
+            core::cmp::min(limit, PLAYER_HISTORY_LIMIT)
         };
 
         let mut game_ids = Vec::new(&env);
