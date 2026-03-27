@@ -124,7 +124,6 @@ describe("GlobalStateStore", () => {
   });
 
   it("invalidates stale pending transactions after 30 minutes", async () => {
-    const store = new GlobalStateStore({ storageKey: "stale_tx_test" });
     const started = Date.now() - 31 * 60 * 1000;
 
     // Simulate manual persistence of stale content
