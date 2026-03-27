@@ -711,10 +711,7 @@ fn proposal_execution_eta(env: &Env, proposal: &Proposal) -> u32 {
         .instance()
         .get(&DataKey::TimelockDelay)
         .unwrap();
-    proposal
-        .end_ledger
-        .checked_add(timelock_delay)
-        .unwrap_or(u32::MAX)
+    proposal.end_ledger.saturating_add(timelock_delay)
 }
 
 // ---------------------------------------------------------------------------

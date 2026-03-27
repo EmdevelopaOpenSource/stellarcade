@@ -81,8 +81,7 @@ pub fn mark_failed(env: Env, settlement_id: Symbol, error_code: u32) -> Result<(
 `Result<(), Error>`
 
 ### `replay_settlement`
-Replay a failed settlement by restoring it to `Pending` and appending its
-identifier back to the queue tail.
+Replay a failed settlement by restoring it to pending and appending it to the tail of the queue.
 
 ```rust
 pub fn replay_settlement(env: Env, admin: Address, settlement_id: Symbol) -> Result<(), Error>
@@ -138,42 +137,53 @@ pub fn get_batch_status(env: Env, start_index: u64, end_index: u64) -> Result<Ba
 `Result<BatchStatus, Error>`
 
 ### `queue_depth`
-Return the queue depth derived from `QueueHead` and `QueueTail`.
+Return queue depth from the current head and tail pointers.
 
 ```rust
 pub fn queue_depth(env: Env) -> u64
 ```
+
+#### Parameters
+
+| Name | Type |
+|------|------|
+| `env` | `Env` |
 
 #### Return Type
 
 `u64`
 
 ### `oldest_pending_settlement`
-Return the oldest pending settlement id in the current queue window.
+Return the oldest pending settlement id, if any.
 
 ```rust
 pub fn oldest_pending_settlement(env: Env) -> Option<Symbol>
 ```
+
+#### Parameters
+
+| Name | Type |
+|------|------|
+| `env` | `Env` |
 
 #### Return Type
 
 `Option<Symbol>`
 
 ### `queue_metrics`
-Return queue depth and oldest pending settlement in one read.
+Return both queue depth and the oldest pending marker in one read.
 
 ```rust
 pub fn queue_metrics(env: Env) -> QueueMetrics
 ```
 
+#### Parameters
+
+| Name | Type |
+|------|------|
+| `env` | `Env` |
+
 #### Return Type
 
 `QueueMetrics`
-
-#### Notes
-
-- The queue metric accessors are read-only and do not mutate storage
-- Empty queues return `0` depth and `None` for the oldest pending marker
-- Replay preserves the original settlement id while creating a fresh queue
-  entry for processing
 

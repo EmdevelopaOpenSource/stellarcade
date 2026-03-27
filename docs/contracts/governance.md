@@ -158,8 +158,7 @@ pub fn get_proposal(env: Env, proposal_id: u64) -> Result<Proposal, Error>
 `Result<Proposal, Error>`
 
 ### `get_proposal_summary`
-Get a display-ready proposal snapshot with tallies, quorum progress, and a
-deterministic execution ETA.
+Return a display-ready proposal snapshot.  Missing proposals return `exists = false` with zeroed numeric fields so downstream callers can distinguish an empty-state from a real proposal.
 
 ```rust
 pub fn get_proposal_summary(env: Env, proposal_id: u64) -> ProposalSummary
@@ -175,16 +174,6 @@ pub fn get_proposal_summary(env: Env, proposal_id: u64) -> ProposalSummary
 #### Return Type
 
 `ProposalSummary`
-
-#### Notes
-
-- Missing proposals return a stable empty summary with `exists = false`
-- Active proposals that have passed voting but are not queued yet are reported
-  as `STATE_SUCCEEDED`
-- Quorum progress follows the contract's current queueing rule, where any
-  non-zero vote total satisfies quorum
-- `execution_eta` is derived as `end_ledger + timelock_delay` before queueing
-  and switches to the stored queue ETA afterward
 
 ### `has_voted`
 Check if an address has voted on a proposal
